@@ -63,6 +63,8 @@
             // 
             // dgvDatos
             // 
+            this.dgvDatos.AllowUserToAddRows = false;
+            this.dgvDatos.AllowUserToDeleteRows = false;
             this.dgvDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvDatos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDatos.BackgroundColor = System.Drawing.Color.CornflowerBlue;
@@ -82,9 +84,10 @@
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvDatos.EnableHeadersVisualStyles = false;
             this.dgvDatos.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvDatos.Location = new System.Drawing.Point(0, 410);
+            this.dgvDatos.Location = new System.Drawing.Point(0, 399);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
@@ -102,7 +105,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             this.dgvDatos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDatos.RowTemplate.Height = 33;
-            this.dgvDatos.Size = new System.Drawing.Size(1051, 363);
+            this.dgvDatos.Size = new System.Drawing.Size(948, 374);
             this.dgvDatos.TabIndex = 18;
             // 
             // gbRegistrar
@@ -131,12 +134,11 @@
             this.gbRegistrar.Controls.Add(this.txtContactName);
             this.gbRegistrar.Controls.Add(this.label2);
             this.gbRegistrar.Controls.Add(this.txtCompanyName);
-            this.gbRegistrar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbRegistrar.Font = new System.Drawing.Font("Century Gothic", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.gbRegistrar.ForeColor = System.Drawing.Color.White;
-            this.gbRegistrar.Location = new System.Drawing.Point(0, 0);
+            this.gbRegistrar.Location = new System.Drawing.Point(12, 12);
             this.gbRegistrar.Name = "gbRegistrar";
-            this.gbRegistrar.Size = new System.Drawing.Size(1051, 410);
+            this.gbRegistrar.Size = new System.Drawing.Size(909, 361);
             this.gbRegistrar.TabIndex = 20;
             this.gbRegistrar.TabStop = false;
             this.gbRegistrar.Text = "REGISTRAR";
@@ -150,7 +152,7 @@
             this.btnELIMINAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnELIMINAR.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnELIMINAR.ForeColor = System.Drawing.Color.White;
-            this.btnELIMINAR.Location = new System.Drawing.Point(742, 314);
+            this.btnELIMINAR.Location = new System.Drawing.Point(675, 289);
             this.btnELIMINAR.Margin = new System.Windows.Forms.Padding(2);
             this.btnELIMINAR.Name = "btnELIMINAR";
             this.btnELIMINAR.Size = new System.Drawing.Size(168, 50);
@@ -167,7 +169,7 @@
             this.btnACTUALIZAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnACTUALIZAR.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnACTUALIZAR.ForeColor = System.Drawing.Color.White;
-            this.btnACTUALIZAR.Location = new System.Drawing.Point(528, 314);
+            this.btnACTUALIZAR.Location = new System.Drawing.Point(461, 289);
             this.btnACTUALIZAR.Margin = new System.Windows.Forms.Padding(2);
             this.btnACTUALIZAR.Name = "btnACTUALIZAR";
             this.btnACTUALIZAR.Size = new System.Drawing.Size(199, 50);
@@ -184,7 +186,7 @@
             this.btnLEER.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLEER.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnLEER.ForeColor = System.Drawing.Color.White;
-            this.btnLEER.Location = new System.Drawing.Point(339, 314);
+            this.btnLEER.Location = new System.Drawing.Point(272, 289);
             this.btnLEER.Margin = new System.Windows.Forms.Padding(2);
             this.btnLEER.Name = "btnLEER";
             this.btnLEER.Size = new System.Drawing.Size(168, 50);
@@ -195,18 +197,18 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(540, 243);
+            this.label11.Location = new System.Drawing.Point(475, 243);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 26);
+            this.label11.Size = new System.Drawing.Size(44, 23);
             this.label11.TabIndex = 44;
             this.label11.Text = "Fax";
             // 
             // txtFax
             // 
-            this.txtFax.Location = new System.Drawing.Point(713, 233);
+            this.txtFax.Location = new System.Drawing.Point(599, 234);
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(301, 42);
             this.txtFax.TabIndex = 43;
@@ -220,7 +222,7 @@
             this.btnCREAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCREAR.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCREAR.ForeColor = System.Drawing.Color.White;
-            this.btnCREAR.Location = new System.Drawing.Point(148, 314);
+            this.btnCREAR.Location = new System.Drawing.Point(81, 289);
             this.btnCREAR.Margin = new System.Windows.Forms.Padding(2);
             this.btnCREAR.Name = "btnCREAR";
             this.btnCREAR.Size = new System.Drawing.Size(168, 50);
@@ -231,172 +233,172 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(540, 195);
+            this.label6.Location = new System.Drawing.Point(475, 195);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 26);
+            this.label6.Size = new System.Drawing.Size(71, 23);
             this.label6.TabIndex = 41;
             this.label6.Text = "Phone";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(540, 146);
+            this.label7.Location = new System.Drawing.Point(475, 146);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(96, 26);
+            this.label7.Size = new System.Drawing.Size(87, 23);
             this.label7.TabIndex = 40;
             this.label7.Text = "Country";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(540, 99);
+            this.label8.Location = new System.Drawing.Point(475, 99);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(135, 26);
+            this.label8.Size = new System.Drawing.Size(122, 23);
             this.label8.TabIndex = 39;
             this.label8.Text = "PostalCode";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(540, 54);
+            this.label9.Location = new System.Drawing.Point(475, 54);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(86, 26);
+            this.label9.Size = new System.Drawing.Size(78, 23);
             this.label9.TabIndex = 38;
             this.label9.Text = "Region";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(11, 249);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(54, 26);
+            this.label10.Size = new System.Drawing.Size(49, 23);
             this.label10.TabIndex = 37;
             this.label10.Text = "City";
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(713, 185);
+            this.txtPhone.Location = new System.Drawing.Point(599, 186);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(301, 42);
             this.txtPhone.TabIndex = 36;
             // 
             // txtCountry
             // 
-            this.txtCountry.Location = new System.Drawing.Point(713, 137);
+            this.txtCountry.Location = new System.Drawing.Point(599, 138);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(301, 42);
             this.txtCountry.TabIndex = 35;
             // 
             // txtPostalCode
             // 
-            this.txtPostalCode.Location = new System.Drawing.Point(713, 89);
+            this.txtPostalCode.Location = new System.Drawing.Point(599, 90);
             this.txtPostalCode.Name = "txtPostalCode";
             this.txtPostalCode.Size = new System.Drawing.Size(301, 42);
             this.txtPostalCode.TabIndex = 34;
             // 
             // txtRegion
             // 
-            this.txtRegion.Location = new System.Drawing.Point(713, 41);
+            this.txtRegion.Location = new System.Drawing.Point(599, 42);
             this.txtRegion.Name = "txtRegion";
             this.txtRegion.Size = new System.Drawing.Size(301, 42);
             this.txtRegion.TabIndex = 33;
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(220, 233);
+            this.txtCity.Location = new System.Drawing.Point(184, 227);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(301, 42);
+            this.txtCity.Size = new System.Drawing.Size(273, 42);
             this.txtCity.TabIndex = 32;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(11, 195);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 26);
+            this.label5.Size = new System.Drawing.Size(88, 23);
             this.label5.TabIndex = 25;
             this.label5.Text = "Address";
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(220, 185);
+            this.txtAddress.Location = new System.Drawing.Point(184, 179);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(301, 42);
+            this.txtAddress.Size = new System.Drawing.Size(273, 42);
             this.txtAddress.TabIndex = 26;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(11, 146);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(139, 26);
+            this.label4.Size = new System.Drawing.Size(126, 23);
             this.label4.TabIndex = 23;
             this.label4.Text = "ContactTitle";
             // 
             // txtContactTitle
             // 
-            this.txtContactTitle.Location = new System.Drawing.Point(220, 137);
+            this.txtContactTitle.Location = new System.Drawing.Point(184, 131);
             this.txtContactTitle.Name = "txtContactTitle";
-            this.txtContactTitle.Size = new System.Drawing.Size(301, 42);
+            this.txtContactTitle.Size = new System.Drawing.Size(273, 42);
             this.txtContactTitle.TabIndex = 24;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(11, 99);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(165, 26);
+            this.label3.Size = new System.Drawing.Size(149, 23);
             this.label3.TabIndex = 21;
             this.label3.Text = "ContactName";
             // 
             // txtContactName
             // 
-            this.txtContactName.Location = new System.Drawing.Point(220, 89);
+            this.txtContactName.Location = new System.Drawing.Point(184, 83);
             this.txtContactName.Name = "txtContactName";
-            this.txtContactName.Size = new System.Drawing.Size(301, 42);
+            this.txtContactName.Size = new System.Drawing.Size(273, 42);
             this.txtContactName.TabIndex = 22;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(11, 54);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(186, 26);
+            this.label2.Size = new System.Drawing.Size(168, 23);
             this.label2.TabIndex = 19;
             this.label2.Text = "CompanyName";
             // 
             // txtCompanyName
             // 
-            this.txtCompanyName.Location = new System.Drawing.Point(220, 41);
+            this.txtCompanyName.Location = new System.Drawing.Point(184, 35);
             this.txtCompanyName.Name = "txtCompanyName";
-            this.txtCompanyName.Size = new System.Drawing.Size(301, 42);
+            this.txtCompanyName.Size = new System.Drawing.Size(273, 42);
             this.txtCompanyName.TabIndex = 20;
             // 
             // CustomerUI
@@ -404,11 +406,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
-            this.ClientSize = new System.Drawing.Size(1051, 773);
+            this.ClientSize = new System.Drawing.Size(948, 773);
             this.Controls.Add(this.gbRegistrar);
             this.Controls.Add(this.dgvDatos);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "CustomerUI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.gbRegistrar.ResumeLayout(false);
