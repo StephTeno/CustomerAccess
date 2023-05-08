@@ -1,15 +1,20 @@
-﻿namespace VisualUI
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace VisualUI
 {
-    public partial class customerUI : UserControl
+    public partial class CustomerUI : Form
     {
-        public customerUI()
+        public CustomerUI()
         {
             InitializeComponent();
-        }
-
-        private void UserControl1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
