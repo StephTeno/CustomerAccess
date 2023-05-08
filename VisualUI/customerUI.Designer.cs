@@ -105,7 +105,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             this.dgvDatos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDatos.RowTemplate.Height = 33;
-            this.dgvDatos.Size = new System.Drawing.Size(948, 374);
+            this.dgvDatos.Size = new System.Drawing.Size(966, 374);
             this.dgvDatos.TabIndex = 18;
             // 
             // gbRegistrar
@@ -138,7 +138,7 @@
             this.gbRegistrar.ForeColor = System.Drawing.Color.White;
             this.gbRegistrar.Location = new System.Drawing.Point(12, 12);
             this.gbRegistrar.Name = "gbRegistrar";
-            this.gbRegistrar.Size = new System.Drawing.Size(909, 361);
+            this.gbRegistrar.Size = new System.Drawing.Size(932, 361);
             this.gbRegistrar.TabIndex = 20;
             this.gbRegistrar.TabStop = false;
             this.gbRegistrar.Text = "REGISTRAR";
@@ -406,7 +406,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
-            this.ClientSize = new System.Drawing.Size(948, 773);
+            this.ClientSize = new System.Drawing.Size(966, 773);
             this.Controls.Add(this.gbRegistrar);
             this.Controls.Add(this.dgvDatos);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
