@@ -1,3 +1,4 @@
+using System.Configuration;
 using System.Runtime.InteropServices;
 using VisualUI;
 
@@ -5,6 +6,7 @@ namespace WinAdo
 {
     public partial class frmAdo : Form
     {
+        string connectionString = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
         public frmAdo()
         {
             InitializeComponent();
