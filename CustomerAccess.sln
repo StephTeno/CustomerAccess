@@ -5,9 +5,7 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinEntity", "WinEntity\WinEntity.csproj", "{1668C064-848E-4909-B843-40697A842291}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualUI", "VisualUI\VisualUI.csproj", "{341A10FA-0549-4E31-AA7A-564A6E026CBE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinAdo", "WinAdo\WinAdo.csproj", "{1BAFD454-4D1B-4AB8-B218-1D9169B2B1EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinAdo", "WinAdo\WinAdo.csproj", "{1BAFD454-4D1B-4AB8-B218-1D9169B2B1EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		{1668C064-848E-4909-B843-40697A842291}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1668C064-848E-4909-B843-40697A842291}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1668C064-848E-4909-B843-40697A842291}.Release|Any CPU.Build.0 = Release|Any CPU
-		{341A10FA-0549-4E31-AA7A-564A6E026CBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{341A10FA-0549-4E31-AA7A-564A6E026CBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{341A10FA-0549-4E31-AA7A-564A6E026CBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{341A10FA-0549-4E31-AA7A-564A6E026CBE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1BAFD454-4D1B-4AB8-B218-1D9169B2B1EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1BAFD454-4D1B-4AB8-B218-1D9169B2B1EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BAFD454-4D1B-4AB8-B218-1D9169B2B1EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
