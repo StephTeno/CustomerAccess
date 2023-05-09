@@ -45,7 +45,7 @@ namespace WinAdo
         private void GetClients()
         {
             string queryString = "SELECT CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax " +
-                                 "FROM Customers ORDER BY CompanyName DESC;";
+                                 "FROM Customers ORDER BY CompanyName ASC;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
