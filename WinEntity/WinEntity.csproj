@@ -21,8 +21,4 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\VisualUI\VisualUI.csproj" />
-  </ItemGroup>
-
 </Project>
