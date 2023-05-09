@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerUI));
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.gbRegistrar = new System.Windows.Forms.GroupBox();
             this.btnELIMINAR = new System.Windows.Forms.Button();
@@ -57,8 +58,30 @@
             this.txtContactName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCompanyName = new System.Windows.Forms.TextBox();
+            this.brTitulo = new System.Windows.Forms.Panel();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
+            this.btnMinimizarM = new System.Windows.Forms.PictureBox();
+            this.btnRestaurarM = new System.Windows.Forms.PictureBox();
+            this.btnMaximizarM = new System.Windows.Forms.PictureBox();
+            this.btnCerrarM = new System.Windows.Forms.PictureBox();
+            this.btnRestaurarMenu = new System.Windows.Forms.PictureBox();
+            this.btnMinimizarMenu = new System.Windows.Forms.PictureBox();
+            this.btnMaximizarMenu = new System.Windows.Forms.PictureBox();
+            this.btnCerrarMenu = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.gbRegistrar.SuspendLayout();
+            this.brTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizarM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurarM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizarM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrarM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurarMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizarMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizarMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrarMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDatos
@@ -84,7 +107,7 @@
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvDatos.EnableHeadersVisualStyles = false;
             this.dgvDatos.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvDatos.Location = new System.Drawing.Point(0, 399);
+            this.dgvDatos.Location = new System.Drawing.Point(0, 440);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
@@ -105,7 +128,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             this.dgvDatos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDatos.RowTemplate.Height = 33;
-            this.dgvDatos.Size = new System.Drawing.Size(966, 374);
+            this.dgvDatos.Size = new System.Drawing.Size(1000, 333);
             this.dgvDatos.TabIndex = 18;
             // 
             // gbRegistrar
@@ -136,9 +159,9 @@
             this.gbRegistrar.Controls.Add(this.txtCompanyName);
             this.gbRegistrar.Font = new System.Drawing.Font("Century Gothic", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.gbRegistrar.ForeColor = System.Drawing.Color.White;
-            this.gbRegistrar.Location = new System.Drawing.Point(12, 12);
+            this.gbRegistrar.Location = new System.Drawing.Point(0, 62);
             this.gbRegistrar.Name = "gbRegistrar";
-            this.gbRegistrar.Size = new System.Drawing.Size(932, 361);
+            this.gbRegistrar.Size = new System.Drawing.Size(1000, 378);
             this.gbRegistrar.TabIndex = 20;
             this.gbRegistrar.TabStop = false;
             this.gbRegistrar.Text = "REGISTRAR";
@@ -199,7 +222,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(475, 243);
+            this.label11.Location = new System.Drawing.Point(520, 243);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(44, 23);
@@ -208,7 +231,7 @@
             // 
             // txtFax
             // 
-            this.txtFax.Location = new System.Drawing.Point(599, 234);
+            this.txtFax.Location = new System.Drawing.Point(677, 234);
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(301, 42);
             this.txtFax.TabIndex = 43;
@@ -235,43 +258,43 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(475, 195);
+            this.label6.Location = new System.Drawing.Point(520, 195);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 23);
+            this.label6.Size = new System.Drawing.Size(93, 23);
             this.label6.TabIndex = 41;
-            this.label6.Text = "Phone";
+            this.label6.Text = "Teléfono";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(475, 146);
+            this.label7.Location = new System.Drawing.Point(520, 146);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(87, 23);
+            this.label7.Size = new System.Drawing.Size(48, 23);
             this.label7.TabIndex = 40;
-            this.label7.Text = "Country";
+            this.label7.Text = "País";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(475, 99);
+            this.label8.Location = new System.Drawing.Point(520, 99);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(122, 23);
+            this.label8.Size = new System.Drawing.Size(146, 23);
             this.label8.TabIndex = 39;
-            this.label8.Text = "PostalCode";
+            this.label8.Text = "Código Postal";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(475, 54);
+            this.label9.Location = new System.Drawing.Point(520, 54);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(78, 23);
@@ -286,41 +309,41 @@
             this.label10.Location = new System.Drawing.Point(11, 249);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 23);
+            this.label10.Size = new System.Drawing.Size(82, 23);
             this.label10.TabIndex = 37;
-            this.label10.Text = "City";
+            this.label10.Text = "Ciudad";
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(599, 186);
+            this.txtPhone.Location = new System.Drawing.Point(677, 186);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(301, 42);
             this.txtPhone.TabIndex = 36;
             // 
             // txtCountry
             // 
-            this.txtCountry.Location = new System.Drawing.Point(599, 138);
+            this.txtCountry.Location = new System.Drawing.Point(677, 138);
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Size = new System.Drawing.Size(301, 42);
             this.txtCountry.TabIndex = 35;
             // 
             // txtPostalCode
             // 
-            this.txtPostalCode.Location = new System.Drawing.Point(599, 90);
+            this.txtPostalCode.Location = new System.Drawing.Point(677, 90);
             this.txtPostalCode.Name = "txtPostalCode";
             this.txtPostalCode.Size = new System.Drawing.Size(301, 42);
             this.txtPostalCode.TabIndex = 34;
             // 
             // txtRegion
             // 
-            this.txtRegion.Location = new System.Drawing.Point(599, 42);
+            this.txtRegion.Location = new System.Drawing.Point(677, 42);
             this.txtRegion.Name = "txtRegion";
             this.txtRegion.Size = new System.Drawing.Size(301, 42);
             this.txtRegion.TabIndex = 33;
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(184, 227);
+            this.txtCity.Location = new System.Drawing.Point(229, 234);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(273, 42);
             this.txtCity.TabIndex = 32;
@@ -333,13 +356,13 @@
             this.label5.Location = new System.Drawing.Point(11, 195);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 23);
+            this.label5.Size = new System.Drawing.Size(104, 23);
             this.label5.TabIndex = 25;
-            this.label5.Text = "Address";
+            this.label5.Text = "Dirección";
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(184, 179);
+            this.txtAddress.Location = new System.Drawing.Point(229, 186);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(273, 42);
             this.txtAddress.TabIndex = 26;
@@ -352,13 +375,13 @@
             this.label4.Location = new System.Drawing.Point(11, 146);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 23);
+            this.label4.Size = new System.Drawing.Size(186, 23);
             this.label4.TabIndex = 23;
-            this.label4.Text = "ContactTitle";
+            this.label4.Text = "Título de contacto";
             // 
             // txtContactTitle
             // 
-            this.txtContactTitle.Location = new System.Drawing.Point(184, 131);
+            this.txtContactTitle.Location = new System.Drawing.Point(229, 138);
             this.txtContactTitle.Name = "txtContactTitle";
             this.txtContactTitle.Size = new System.Drawing.Size(273, 42);
             this.txtContactTitle.TabIndex = 24;
@@ -371,13 +394,13 @@
             this.label3.Location = new System.Drawing.Point(11, 99);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 23);
+            this.label3.Size = new System.Drawing.Size(216, 23);
             this.label3.TabIndex = 21;
-            this.label3.Text = "ContactName";
+            this.label3.Text = "Nombre de contacto";
             // 
             // txtContactName
             // 
-            this.txtContactName.Location = new System.Drawing.Point(184, 83);
+            this.txtContactName.Location = new System.Drawing.Point(229, 90);
             this.txtContactName.Name = "txtContactName";
             this.txtContactName.Size = new System.Drawing.Size(273, 42);
             this.txtContactName.TabIndex = 22;
@@ -390,32 +413,189 @@
             this.label2.Location = new System.Drawing.Point(11, 54);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(168, 23);
+            this.label2.Size = new System.Drawing.Size(213, 23);
             this.label2.TabIndex = 19;
-            this.label2.Text = "CompanyName";
+            this.label2.Text = "Nombre de empresa";
             // 
             // txtCompanyName
             // 
-            this.txtCompanyName.Location = new System.Drawing.Point(184, 35);
+            this.txtCompanyName.Location = new System.Drawing.Point(229, 42);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(273, 42);
             this.txtCompanyName.TabIndex = 20;
+            // 
+            // brTitulo
+            // 
+            this.brTitulo.BackColor = System.Drawing.Color.Navy;
+            this.brTitulo.Controls.Add(this.btnMinimizar);
+            this.brTitulo.Controls.Add(this.btnCerrar);
+            this.brTitulo.Controls.Add(this.btnMinimizarM);
+            this.brTitulo.Controls.Add(this.btnRestaurarM);
+            this.brTitulo.Controls.Add(this.btnMaximizarM);
+            this.brTitulo.Controls.Add(this.btnCerrarM);
+            this.brTitulo.Controls.Add(this.btnRestaurarMenu);
+            this.brTitulo.Controls.Add(this.btnMinimizarMenu);
+            this.brTitulo.Controls.Add(this.btnMaximizarMenu);
+            this.brTitulo.Controls.Add(this.btnCerrarMenu);
+            this.brTitulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.brTitulo.Location = new System.Drawing.Point(0, 0);
+            this.brTitulo.Name = "brTitulo";
+            this.brTitulo.Size = new System.Drawing.Size(1000, 47);
+            this.brTitulo.TabIndex = 21;
+            this.brTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.brTitulo_MouseDown);
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
+            this.btnMinimizar.Location = new System.Drawing.Point(925, 9);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(25, 25);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizar.TabIndex = 7;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
+            this.btnCerrar.ImageLocation = "";
+            this.btnCerrar.Location = new System.Drawing.Point(966, 9);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(25, 25);
+            this.btnCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCerrar.TabIndex = 8;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // btnMinimizarM
+            // 
+            this.btnMinimizarM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizarM.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizarM.Location = new System.Drawing.Point(1998, 7);
+            this.btnMinimizarM.Name = "btnMinimizarM";
+            this.btnMinimizarM.Size = new System.Drawing.Size(25, 25);
+            this.btnMinimizarM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizarM.TabIndex = 1;
+            this.btnMinimizarM.TabStop = false;
+            // 
+            // btnRestaurarM
+            // 
+            this.btnRestaurarM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRestaurarM.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRestaurarM.Image = ((System.Drawing.Image)(resources.GetObject("btnRestaurarM.Image")));
+            this.btnRestaurarM.Location = new System.Drawing.Point(2034, 7);
+            this.btnRestaurarM.Name = "btnRestaurarM";
+            this.btnRestaurarM.Size = new System.Drawing.Size(25, 25);
+            this.btnRestaurarM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnRestaurarM.TabIndex = 6;
+            this.btnRestaurarM.TabStop = false;
+            this.btnRestaurarM.Visible = false;
+            // 
+            // btnMaximizarM
+            // 
+            this.btnMaximizarM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizarM.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMaximizarM.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizarM.Image")));
+            this.btnMaximizarM.Location = new System.Drawing.Point(2039, 7);
+            this.btnMaximizarM.Name = "btnMaximizarM";
+            this.btnMaximizarM.Size = new System.Drawing.Size(25, 25);
+            this.btnMaximizarM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMaximizarM.TabIndex = 6;
+            this.btnMaximizarM.TabStop = false;
+            // 
+            // btnCerrarM
+            // 
+            this.btnCerrarM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrarM.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarM.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarM.Image")));
+            this.btnCerrarM.ImageLocation = "";
+            this.btnCerrarM.Location = new System.Drawing.Point(2070, 7);
+            this.btnCerrarM.Name = "btnCerrarM";
+            this.btnCerrarM.Size = new System.Drawing.Size(25, 25);
+            this.btnCerrarM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCerrarM.TabIndex = 5;
+            this.btnCerrarM.TabStop = false;
+            // 
+            // btnRestaurarMenu
+            // 
+            this.btnRestaurarMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRestaurarMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRestaurarMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnRestaurarMenu.Image")));
+            this.btnRestaurarMenu.Location = new System.Drawing.Point(3141, 7);
+            this.btnRestaurarMenu.Name = "btnRestaurarMenu";
+            this.btnRestaurarMenu.Size = new System.Drawing.Size(25, 25);
+            this.btnRestaurarMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnRestaurarMenu.TabIndex = 3;
+            this.btnRestaurarMenu.TabStop = false;
+            this.btnRestaurarMenu.Visible = false;
+            // 
+            // btnMinimizarMenu
+            // 
+            this.btnMinimizarMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizarMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizarMenu.Location = new System.Drawing.Point(3110, 7);
+            this.btnMinimizarMenu.Name = "btnMinimizarMenu";
+            this.btnMinimizarMenu.Size = new System.Drawing.Size(25, 25);
+            this.btnMinimizarMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizarMenu.TabIndex = 0;
+            this.btnMinimizarMenu.TabStop = false;
+            // 
+            // btnMaximizarMenu
+            // 
+            this.btnMaximizarMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizarMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMaximizarMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizarMenu.Image")));
+            this.btnMaximizarMenu.Location = new System.Drawing.Point(3141, 7);
+            this.btnMaximizarMenu.Name = "btnMaximizarMenu";
+            this.btnMaximizarMenu.Size = new System.Drawing.Size(25, 25);
+            this.btnMaximizarMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMaximizarMenu.TabIndex = 1;
+            this.btnMaximizarMenu.TabStop = false;
+            // 
+            // btnCerrarMenu
+            // 
+            this.btnCerrarMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrarMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarMenu.Image")));
+            this.btnCerrarMenu.Location = new System.Drawing.Point(3172, 7);
+            this.btnCerrarMenu.Name = "btnCerrarMenu";
+            this.btnCerrarMenu.Size = new System.Drawing.Size(25, 25);
+            this.btnCerrarMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCerrarMenu.TabIndex = 2;
+            this.btnCerrarMenu.TabStop = false;
             // 
             // CustomerUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DodgerBlue;
-            this.ClientSize = new System.Drawing.Size(966, 773);
+            this.ClientSize = new System.Drawing.Size(1000, 773);
+            this.Controls.Add(this.brTitulo);
             this.Controls.Add(this.gbRegistrar);
             this.Controls.Add(this.dgvDatos);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CustomerUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.gbRegistrar.ResumeLayout(false);
             this.gbRegistrar.PerformLayout();
+            this.brTitulo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizarM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurarM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizarM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrarM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurarMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizarMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizarMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrarMenu)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -448,5 +628,16 @@
         private TextBox txtContactName;
         private Label label2;
         private TextBox txtCompanyName;
+        private Panel brTitulo;
+        private PictureBox btnMinimizar;
+        private PictureBox btnCerrar;
+        private PictureBox btnMinimizarM;
+        private PictureBox btnRestaurarM;
+        private PictureBox btnMaximizarM;
+        private PictureBox btnCerrarM;
+        private PictureBox btnRestaurarMenu;
+        private PictureBox btnMinimizarMenu;
+        private PictureBox btnMaximizarMenu;
+        private PictureBox btnCerrarMenu;
     }
 }
