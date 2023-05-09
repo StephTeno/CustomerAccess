@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics.Metrics;
+using System.Net;
 
 namespace WinAdo
 {
@@ -59,6 +61,118 @@ namespace WinAdo
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvDatos.Rows[e.RowIndex];
+                txtIDCliente.Text = row.Cells["CustomerID"].Value.ToString();
+                txtCompanyName.Text = row.Cells["CompanyName"].Value.ToString();
+                txtContactName.Text = row.Cells["ContactName"].Value.ToString();
+                txtContactTitle.Text = row.Cells["ContactTitle"].Value.ToString();
+                txtAddress.Text = row.Cells["Address"].Value.ToString();
+                txtCity.Text = row.Cells["City"].Value.ToString();
+                txtRegion.Text = row.Cells["Region"].Value.ToString();
+                txtPostalCode.Text = row.Cells["PostalCode"].Value.ToString();
+                txtCountry.Text = row.Cells["Country"].Value.ToString();
+                txtPhone.Text = row.Cells["Phone"].Value.ToString();
+                txtFax.Text = row.Cells["Fax"].Value.ToString();
+            }
+        }
+
+        private void btnCREAR_Click(object sender, EventArgs e)
+        {
+            InsertClientes();
+        }
+        private void InsertClientes()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    string queryString = "INSERT INTO Customers(CustomerID,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax)" +
+                    "VALUES('" + txtIDCliente.Text + "', '" + txtCompanyName.Text + "', '" + txtContactName.Text + "', '" + txtContactTitle.Text + "', '"
+                    + txtAddress.Text + "', '" + txtCity.Text + "', '" + txtRegion.Text + "', '" + txtPostalCode.Text + "', '" + txtCountry.Text + "', '"
+                    + txtPhone.Text + "', '" + txtFax.Text + "')";
+                    SqlCommand cmd = new SqlCommand(queryString, connection);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Cliente guardado correctamente");
+                    LimpiarTextBoxes(this);
+                    GetClients();
+                }
+                catch (InvalidCastException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        private void btnELIMINAR_Click(object sender, EventArgs e)
+        {
+            DeleteClients();
+        }
+        private void DeleteClients()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    string queryString = "DELETE FROM Customers WHERE CustomerID = '" + txtIDCliente.Text + "'";
+                    SqlCommand cmd = new SqlCommand(queryString, connection);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Cliente eliminado correctamente");
+                    LimpiarTextBoxes(this);
+                    GetClients();
+                }
+                catch (InvalidCastException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        private void btnACTUALIZAR_Click(object sender, EventArgs e)
+        {
+            UpdateClients();
+        }
+        private void UpdateClients()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    string queryString = "UPDATE Customers SET CompanyName = '" + txtCompanyName.Text
+                        + "', ContactName = '" + txtContactName.Text + "', ContactTitle = '" + txtContactTitle.Text + "', Address = '" + txtAddress.Text + "', " +
+                        "City = '" + txtCity.Text + "', Region = '" + txtRegion.Text + "', PostalCode = '" + txtPostalCode.Text + "', Country = '" + txtCountry.Text + "', " +
+                        "Phone = '" + txtPhone.Text + "', Fax = '" + txtFax.Text + "' WHERE CustomerID = '" + txtIDCliente.Text+"'";
+                    SqlCommand cmd = new SqlCommand(queryString, connection);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Cliente actualizado correctamente");
+                    LimpiarTextBoxes(this);
+                    GetClients();
+                }
+                catch (InvalidCastException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        private void LimpiarTextBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Clear();
+                }
+                if (c.HasChildren)
+                {
+                    LimpiarTextBoxes(c);
                 }
             }
         }
