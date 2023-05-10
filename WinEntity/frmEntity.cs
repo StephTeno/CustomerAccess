@@ -39,6 +39,8 @@ namespace WinEntity
             this.WindowState = FormWindowState.Minimized;
         }
 
+        #region Validaciones
+
         //Aqui comienzan las Validaciones de campos vacios
 
         private void txtCompanyName_Validated(object sender, EventArgs e)
@@ -189,5 +191,28 @@ namespace WinEntity
                 e.Handled = true;
             }
         }//Aqui terminan las Validaciones de solo numeros
+
+        public bool ValidarTextBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    if (string.IsNullOrEmpty(((TextBox)c).Text))
+                    {
+                        return false;
+                    }
+                }
+                if (c.HasChildren)
+                {
+                    if (!ValidarTextBoxes(c))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        #endregion
     }
 }

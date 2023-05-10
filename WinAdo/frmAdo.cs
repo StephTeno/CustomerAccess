@@ -86,7 +86,14 @@ namespace WinAdo
 
         private void btnCREAR_Click(object sender, EventArgs e)
         {
-            InsertClientes();
+            if (ValidarTextBoxes(this))
+            {
+                InsertClientes();
+            }
+            else
+            {
+                MessageBox.Show("Llene todos los campos de forma correcta");
+            }
         }
         private void InsertClientes()
         {
@@ -137,7 +144,14 @@ namespace WinAdo
         }
         private void btnACTUALIZAR_Click(object sender, EventArgs e)
         {
-            UpdateClients();
+            if (ValidarTextBoxes(this))
+            {
+                UpdateClients();
+            }
+            else
+            {
+                MessageBox.Show("Llene todos los campos de forma correcta");
+            }
         }
         private void UpdateClients()
         {
@@ -148,7 +162,7 @@ namespace WinAdo
                     string queryString = "UPDATE Customers SET CompanyName = '" + txtCompanyName.Text
                         + "', ContactName = '" + txtContactName.Text + "', ContactTitle = '" + txtContactTitle.Text + "', Address = '" + txtAddress.Text + "', " +
                         "City = '" + txtCity.Text + "', Region = '" + txtRegion.Text + "', PostalCode = '" + txtPostalCode.Text + "', Country = '" + txtCountry.Text + "', " +
-                        "Phone = '" + txtPhone.Text + "', Fax = '" + txtFax.Text + "' WHERE CustomerID = '" + txtIDCliente.Text+"'";
+                        "Phone = '" + txtPhone.Text + "', Fax = '" + txtFax.Text + "' WHERE CustomerID = '" + txtIDCliente.Text + "'";
                     SqlCommand cmd = new SqlCommand(queryString, connection);
                     connection.Open();
                     cmd.ExecuteNonQuery();
@@ -177,6 +191,7 @@ namespace WinAdo
             }
         }
 
+        #region Validaciones
         //Aqui comienzan las Validaciones de campos vacios
 
         private void txtCompanyName_Validated(object sender, EventArgs e)
@@ -199,7 +214,7 @@ namespace WinAdo
                 erpError.SetError(txtContactName, "Campos Vacios, Ingrese los datos...");
                 txtContactName.Focus();
             }
-            else {erpError.Clear();}
+            else { erpError.Clear(); }
         }
 
         private void txtContactTitle_Validated(object sender, EventArgs e)
@@ -327,5 +342,28 @@ namespace WinAdo
                 e.Handled = true;
             }
         }//Aqui terminan las Validaciones de solo numeros
+
+        public bool ValidarTextBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    if (string.IsNullOrEmpty(((TextBox)c).Text))
+                    {
+                        return false;
+                    }
+                }
+                if (c.HasChildren)
+                {
+                    if (!ValidarTextBoxes(c))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+#endregion
     }
 }
