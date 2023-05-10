@@ -8,15 +8,116 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using WinEntity.Data;
+using WinEntity.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WinEntity
 {
     public partial class frmEntity : Form
     {
+        private static int id = 0;
+        Customer? cus = null;
         public frmEntity()
         {
             InitializeComponent();
+            Refrescar();
         }
+
+        #region Funciones
+        private void LimpiarTextBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Clear();
+                }
+                if (c.HasChildren)
+                {
+                    LimpiarTextBoxes(c);
+                }
+            }
+        }
+        private void Refrescar()
+        {
+            using (var context = new NorthwindContext())
+            {
+                var lst = context.Customers.OrderBy(c => c.CustomerId);
+                dgvDatos.DataSource = lst.ToList();
+            }
+        }
+
+        private void Guardar()
+        {
+            using (var context = new NorthwindContext())
+            {
+                cus = new Customer();
+                cus.CustomerId = txtIDCliente.Text;
+                cus.CompanyName = txtCompanyName.Text;
+                cus.ContactName = txtContactName.Text;
+                cus.ContactTitle = txtContactTitle.Text;
+                cus.Address = txtAddress.Text;
+                cus.City = txtCity.Text;
+                cus.Region = txtRegion.Text;
+                cus.PostalCode = txtPostalCode.Text;
+                cus.Country = txtCountry.Text;
+                cus.Phone = txtPhone.Text;
+                cus.Fax = txtFax.Text;
+                context.Customers.Add(cus);
+                context.SaveChanges();
+                LimpiarTextBoxes(this);
+                MessageBox.Show("Cliente Agregado");
+                Refrescar();
+            }
+        }
+        private void ObtenerDatos(int key)
+        {
+            using (var context = new NorthwindContext())
+            {
+                cus = context.Customers.Find(key);
+                txtIDCliente.Text = cus.CustomerId;
+                txtCompanyName.Text = cus.CompanyName;
+                txtContactName.Text = cus.ContactName;
+                txtContactTitle.Text = cus.ContactTitle;
+                txtAddress.Text = cus.Address;
+                txtCity.Text = cus.City;
+                txtRegion.Text = cus.Region;
+                txtPostalCode.Text = cus.PostalCode;
+                txtCountry.Text = cus.Country;
+                txtPhone.Text = cus.Phone;
+                txtFax.Text = cus.Fax;
+            }
+        }
+
+        private void Actualizar()
+        {
+            if (id != 0)
+            {
+                using (var context = new NorthwindContext())
+                {
+                    cus.CustomerId = txtIDCliente.Text;
+                    cus.CompanyName = txtCompanyName.Text;
+                    cus.ContactName = txtContactName.Text;
+                    cus.ContactTitle = txtContactTitle.Text;
+                    cus.Address = txtAddress.Text;
+                    cus.City = txtCity.Text;
+                    cus.Region = txtRegion.Text;
+                    cus.PostalCode = txtPostalCode.Text;
+                    cus.Country = txtCountry.Text;
+                    cus.Phone = txtPhone.Text;
+                    cus.Fax = txtFax.Text;
+                    context.Entry(cus).State = EntityState.Modified;
+                    context.SaveChanges();
+                }
+                LimpiarTextBoxes(this);
+                MessageBox.Show("Se ha actualizado correctamente");
+                Refrescar();
+            }
+        }
+        #endregion
+
+        #region ComponentesVisualesLlamativos
         //[ Esto es para que se pueda mover nuestro formulario
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -38,6 +139,7 @@ namespace WinEntity
         {
             this.WindowState = FormWindowState.Minimized;
         }
+        #endregion
 
         #region Validaciones
 
@@ -214,5 +316,57 @@ namespace WinEntity
             return true;
         }
         #endregion
+
+        private void btnCREAR_Click(object sender, EventArgs e)
+        {
+            if (ValidarTextBoxes(this))
+            {
+                Guardar();
+            }
+            else
+            {
+                MessageBox.Show("Llene todos los campos de forma correcta");
+            }
+        }
+
+        private void dgvDatos_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            foreach (DataGridViewRow r in dgvDatos.Rows)
+            {
+                if (r.Index == e.RowIndex)
+                {
+                    id = int.Parse(r.Cells[0].Value.ToString()!);
+                    ObtenerDatos(id);
+                }
+            }
+        }
+
+        private void btnACTUALIZAR_Click(object sender, EventArgs e)
+        {
+            if (ValidarTextBoxes(this))
+            {
+                Actualizar();
+            }
+            else
+            {
+                MessageBox.Show("Llene todos los campos de forma correcta");
+            }
+        }
+
+        private void btnELIMINAR_Click(object sender, EventArgs e)
+        {
+            if (id != 0)
+            {
+                using (var context = new NorthwindContext())
+                {
+                    Customer cu = context.Customers.Find(id);
+                    context.Customers.Remove(cu);
+                    context.SaveChanges();
+                }
+                LimpiarTextBoxes(this);
+                MessageBox.Show("Se ha eliminado correctamente");
+                Refrescar();
+            }
+        }
     }
 }
