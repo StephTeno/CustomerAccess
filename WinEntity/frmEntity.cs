@@ -11,12 +11,13 @@ using System.Runtime.InteropServices;
 using WinEntity.Data;
 using WinEntity.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace WinEntity
 {
     public partial class frmEntity : Form
     {
-        private static int id = 0;
+        private static string id = string.Empty;
         Customer? cus = null;
         public frmEntity()
         {
@@ -71,11 +72,11 @@ namespace WinEntity
                 Refrescar();
             }
         }
-        private void ObtenerDatos(int key)
+        private void ObtenerDatos(string key)
         {
             using (var context = new NorthwindContext())
             {
-                cus = context.Customers.Find(key);
+                cus = context.Customers.Single(c=>c.CustomerId==key);
                 txtIDCliente.Text = cus.CustomerId;
                 txtCompanyName.Text = cus.CompanyName;
                 txtContactName.Text = cus.ContactName;
@@ -92,7 +93,7 @@ namespace WinEntity
 
         private void Actualizar()
         {
-            if (id != 0)
+            if (id != string.Empty)
             {
                 using (var context = new NorthwindContext())
                 {
@@ -335,7 +336,7 @@ namespace WinEntity
             {
                 if (r.Index == e.RowIndex)
                 {
-                    id = int.Parse(r.Cells[0].Value.ToString()!);
+                    id = r.Cells["CustomerID"].Value.ToString();
                     ObtenerDatos(id);
                 }
             }
@@ -355,11 +356,11 @@ namespace WinEntity
 
         private void btnELIMINAR_Click(object sender, EventArgs e)
         {
-            if (id != 0)
+            if (id != string.Empty)
             {
                 using (var context = new NorthwindContext())
                 {
-                    Customer cu = context.Customers.Find(id);
+                    Customer cu = context.Customers.Single(c => c.CustomerId == id);
                     context.Customers.Remove(cu);
                     context.SaveChanges();
                 }
