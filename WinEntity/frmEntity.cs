@@ -19,10 +19,12 @@ namespace WinEntity
     {
         private static string id = string.Empty;
         Customer? cus = null;
+        bool propio = false;
+        List<string> idcreados = new List<string>();
         public frmEntity()
         {
             InitializeComponent();
-            Refrescar();
+            LeerDatos();
         }
 
         #region Funciones
@@ -40,7 +42,7 @@ namespace WinEntity
                 }
             }
         }
-        private void Refrescar()
+        private void LeerDatos()
         {
             using (var context = new NorthwindContext())
             {
@@ -65,11 +67,12 @@ namespace WinEntity
                 cus.Country = txtCountry.Text;
                 cus.Phone = txtPhone.Text;
                 cus.Fax = txtFax.Text;
+                idcreados.Add(txtIDCliente.Text);
                 context.Customers.Add(cus);
                 context.SaveChanges();
                 LimpiarTextBoxes(this);
                 MessageBox.Show("Cliente Agregado");
-                Refrescar();
+                LeerDatos();
             }
         }
         private void ObtenerDatos(string key)
@@ -113,7 +116,26 @@ namespace WinEntity
                 }
                 LimpiarTextBoxes(this);
                 MessageBox.Show("Se ha actualizado correctamente");
-                Refrescar();
+                LeerDatos();
+            }
+        }
+        private void Eliminar()
+        {
+            if (id != string.Empty)
+            {
+                using (var context = new NorthwindContext())
+                {
+                    Customer cu = context.Customers.Single(c => c.CustomerId == id);
+                    context.Customers.Remove(cu);
+                    context.SaveChanges();
+                }
+                LimpiarTextBoxes(this);
+                MessageBox.Show("Se ha eliminado correctamente");
+                LeerDatos();
+            }
+            else
+            {
+                MessageBox.Show("Selecione un registro");
             }
         }
         #endregion
@@ -356,17 +378,31 @@ namespace WinEntity
 
         private void btnELIMINAR_Click(object sender, EventArgs e)
         {
-            if (id != string.Empty)
+            if (idcreados.Count != 0)
             {
-                using (var context = new NorthwindContext())
+                for (int i = 0; i < idcreados.Count; i++)
                 {
-                    Customer cu = context.Customers.Single(c => c.CustomerId == id);
-                    context.Customers.Remove(cu);
-                    context.SaveChanges();
+                    if (txtIDCliente.Text == idcreados[i])
+                    {
+                        propio = true;
+                    }
+                    else
+                    {
+                        propio=false;
+                    }
                 }
-                LimpiarTextBoxes(this);
-                MessageBox.Show("Se ha eliminado correctamente");
-                Refrescar();
+                if (propio)
+                {
+                    Eliminar();
+                }
+                else
+                {
+                    MessageBox.Show("Elimine un registro que usted haya creado");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ingrese por lo menos un registro propio");
             }
         }
     }

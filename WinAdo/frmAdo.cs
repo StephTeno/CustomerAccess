@@ -15,54 +15,13 @@ namespace WinAdo
 {
     public partial class frmAdo : Form
     {
+        List<string> idcreados = new List<string>();
+        bool propio = false;    
         string connectionString = ConfigurationManager.ConnectionStrings["WinAdo.Properties.Settings.Connection"].ConnectionString;
         public frmAdo()
         {
             InitializeComponent();
-            GetClients();
-        }
-        //[ Esto es para que se pueda mover nuestro formulario
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int IParam);
-
-        private void brTitulo_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void btnMinimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-        private void GetClients()
-        {
-            string queryString = "SELECT CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax " +
-                                 "FROM Customers ORDER BY CompanyName ASC;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(queryString, connection);
-                try
-                {
-                    connection.Open();
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-                    dgvDatos.DataSource = dataTable;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            LeerDatos();
         }
 
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -88,60 +47,44 @@ namespace WinAdo
         {
             if (ValidarTextBoxes(this))
             {
-                InsertClientes();
+                InsertarClientes();
             }
             else
             {
                 MessageBox.Show("Llene todos los campos de forma correcta");
             }
         }
-        private void InsertClientes()
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    string queryString = "INSERT INTO Customers(CustomerID,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax)" +
-                    "VALUES('" + txtIDCliente.Text + "', '" + txtCompanyName.Text + "', '" + txtContactName.Text + "', '" + txtContactTitle.Text + "', '"
-                    + txtAddress.Text + "', '" + txtCity.Text + "', '" + txtRegion.Text + "', '" + txtPostalCode.Text + "', '" + txtCountry.Text + "', '"
-                    + txtPhone.Text + "', '" + txtFax.Text + "')";
-                    SqlCommand cmd = new SqlCommand(queryString, connection);
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Cliente guardado correctamente");
-                    LimpiarTextBoxes(this);
-                    GetClients();
-                }
-                catch (InvalidCastException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
+        
         private void btnELIMINAR_Click(object sender, EventArgs e)
         {
-            DeleteClients();
-        }
-        private void DeleteClients()
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (idcreados.Count != 0)
             {
-                try
+                for (int i = 0; i < idcreados.Count; i++)
                 {
-                    string queryString = "DELETE FROM Customers WHERE CustomerID = '" + txtIDCliente.Text + "'";
-                    SqlCommand cmd = new SqlCommand(queryString, connection);
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Cliente eliminado correctamente");
-                    LimpiarTextBoxes(this);
-                    GetClients();
+                    if (txtIDCliente.Text == idcreados[i])
+                    {
+                        propio = true;
+                    }
+                    else
+                    {
+                        propio = false;
+                    }
                 }
-                catch (InvalidCastException ex)
+                if (propio)
                 {
-                    MessageBox.Show(ex.Message);
+                    EliminarClients();
+                }
+                else
+                {
+                    MessageBox.Show("Elimine un registro que usted haya creado");
                 }
             }
+            else
+            {
+                MessageBox.Show("Ingrese por lo menos un registro propio");
+            }
         }
+        
         private void btnACTUALIZAR_Click(object sender, EventArgs e)
         {
             if (ValidarTextBoxes(this))
@@ -151,6 +94,95 @@ namespace WinAdo
             else
             {
                 MessageBox.Show("Llene todos los campos de forma correcta");
+            }
+        }
+        
+        #region Funciones
+        private void LimpiarTextBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Clear();
+                }
+                if (c.HasChildren)
+                {
+                    LimpiarTextBoxes(c);
+                }
+            }
+        }
+        private void LeerDatos()
+        {
+            string queryString = "SELECT CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax " +
+                                 "FROM Customers ORDER BY CompanyName ASC;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                try
+                {
+                    connection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dgvDatos.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        private void InsertarClientes()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    string queryString = "INSERT INTO Customers(CustomerID,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax)" +
+                    "VALUES('" + txtIDCliente.Text + "', '" + txtCompanyName.Text + "', '" + txtContactName.Text + "', '" + txtContactTitle.Text + "', '"
+                    + txtAddress.Text + "', '" + txtCity.Text + "', '" + txtRegion.Text + "', '" + txtPostalCode.Text + "', '" + txtCountry.Text + "', '"
+                    + txtPhone.Text + "', '" + txtFax.Text + "')";
+                    idcreados.Add(txtIDCliente.Text);
+                    SqlCommand cmd = new SqlCommand(queryString, connection);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Cliente guardado correctamente");
+                    LimpiarTextBoxes(this);
+                    LeerDatos();
+                }
+                catch (InvalidCastException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+        private void EliminarClients()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    if (txtIDCliente.Text != string.Empty)
+                    {
+                        string queryString = "DELETE FROM Customers WHERE CustomerID = '" + txtIDCliente.Text + "'";
+                        SqlCommand cmd = new SqlCommand(queryString, connection);
+                        connection.Open();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Cliente eliminado correctamente");
+                        LimpiarTextBoxes(this);
+                        LeerDatos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Selecione un registro");
+                    }
+                }
+                catch (InvalidCastException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
         private void UpdateClients()
@@ -168,7 +200,7 @@ namespace WinAdo
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Cliente actualizado correctamente");
                     LimpiarTextBoxes(this);
-                    GetClients();
+                    LeerDatos();
                 }
                 catch (InvalidCastException ex)
                 {
@@ -176,20 +208,7 @@ namespace WinAdo
                 }
             }
         }
-        private void LimpiarTextBoxes(Control control)
-        {
-            foreach (Control c in control.Controls)
-            {
-                if (c is TextBox)
-                {
-                    ((TextBox)c).Clear();
-                }
-                if (c.HasChildren)
-                {
-                    LimpiarTextBoxes(c);
-                }
-            }
-        }
+        #endregion
 
         #region Validaciones
         //Aqui comienzan las Validaciones de campos vacios
@@ -364,6 +383,30 @@ namespace WinAdo
             }
             return true;
         }
-#endregion
+        #endregion
+
+        #region ComponentesVisualesLlamativos
+        //[ Esto es para que se pueda mover nuestro formulario
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int IParam);
+
+        private void brTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        #endregion
     }
 }
