@@ -8,15 +8,139 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using WinEntity.Data;
+using WinEntity.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace WinEntity
 {
     public partial class frmEntity : Form
     {
+        private static string id = string.Empty;
+        Customer? cus = null;
+        bool propio = false;
+        List<string> idcreados = new List<string>();
         public frmEntity()
         {
             InitializeComponent();
+            LeerDatos();
         }
+
+        #region Funciones
+        private void LimpiarTextBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    ((TextBox)c).Clear();
+                }
+                if (c.HasChildren)
+                {
+                    LimpiarTextBoxes(c);
+                }
+            }
+        }
+        private void LeerDatos()
+        {
+            using (var context = new NorthwindContext())
+            {
+                var lst = context.Customers.OrderBy(c => c.CustomerId);
+                dgvDatos.DataSource = lst.ToList();
+            }
+        }
+
+        private void Guardar()
+        {
+            using (var context = new NorthwindContext())
+            {
+                cus = new Customer();
+                cus.CustomerId = txtIDCliente.Text;
+                cus.CompanyName = txtCompanyName.Text;
+                cus.ContactName = txtContactName.Text;
+                cus.ContactTitle = txtContactTitle.Text;
+                cus.Address = txtAddress.Text;
+                cus.City = txtCity.Text;
+                cus.Region = txtRegion.Text;
+                cus.PostalCode = txtPostalCode.Text;
+                cus.Country = txtCountry.Text;
+                cus.Phone = txtPhone.Text;
+                cus.Fax = txtFax.Text;
+                idcreados.Add(txtIDCliente.Text);
+                context.Customers.Add(cus);
+                context.SaveChanges();
+                LimpiarTextBoxes(this);
+                MessageBox.Show("Cliente Agregado");
+                LeerDatos();
+            }
+        }
+        private void ObtenerDatos(string key)
+        {
+            using (var context = new NorthwindContext())
+            {
+                cus = context.Customers.Single(c=>c.CustomerId==key);
+                txtIDCliente.Text = cus.CustomerId;
+                txtCompanyName.Text = cus.CompanyName;
+                txtContactName.Text = cus.ContactName;
+                txtContactTitle.Text = cus.ContactTitle;
+                txtAddress.Text = cus.Address;
+                txtCity.Text = cus.City;
+                txtRegion.Text = cus.Region;
+                txtPostalCode.Text = cus.PostalCode;
+                txtCountry.Text = cus.Country;
+                txtPhone.Text = cus.Phone;
+                txtFax.Text = cus.Fax;
+            }
+        }
+
+        private void Actualizar()
+        {
+            if (id != string.Empty)
+            {
+                using (var context = new NorthwindContext())
+                {
+                    cus.CustomerId = txtIDCliente.Text;
+                    cus.CompanyName = txtCompanyName.Text;
+                    cus.ContactName = txtContactName.Text;
+                    cus.ContactTitle = txtContactTitle.Text;
+                    cus.Address = txtAddress.Text;
+                    cus.City = txtCity.Text;
+                    cus.Region = txtRegion.Text;
+                    cus.PostalCode = txtPostalCode.Text;
+                    cus.Country = txtCountry.Text;
+                    cus.Phone = txtPhone.Text;
+                    cus.Fax = txtFax.Text;
+                    context.Entry(cus).State = EntityState.Modified;
+                    context.SaveChanges();
+                }
+                LimpiarTextBoxes(this);
+                MessageBox.Show("Se ha actualizado correctamente");
+                LeerDatos();
+            }
+        }
+        private void Eliminar()
+        {
+            if (id != string.Empty)
+            {
+                using (var context = new NorthwindContext())
+                {
+                    Customer cu = context.Customers.Single(c => c.CustomerId == id);
+                    context.Customers.Remove(cu);
+                    context.SaveChanges();
+                }
+                LimpiarTextBoxes(this);
+                MessageBox.Show("Se ha eliminado correctamente");
+                LeerDatos();
+            }
+            else
+            {
+                MessageBox.Show("Selecione un registro");
+            }
+        }
+        #endregion
+
+        #region ComponentesVisualesLlamativos
         //[ Esto es para que se pueda mover nuestro formulario
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -38,6 +162,9 @@ namespace WinEntity
         {
             this.WindowState = FormWindowState.Minimized;
         }
+        #endregion
+
+        #region Validaciones
 
         //Aqui comienzan las Validaciones de campos vacios
 
@@ -189,5 +316,94 @@ namespace WinEntity
                 e.Handled = true;
             }
         }//Aqui terminan las Validaciones de solo numeros
+
+        public bool ValidarTextBoxes(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                if (c is TextBox)
+                {
+                    if (string.IsNullOrEmpty(((TextBox)c).Text))
+                    {
+                        return false;
+                    }
+                }
+                if (c.HasChildren)
+                {
+                    if (!ValidarTextBoxes(c))
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        #endregion
+
+        private void btnCREAR_Click(object sender, EventArgs e)
+        {
+            if (ValidarTextBoxes(this))
+            {
+                Guardar();
+            }
+            else
+            {
+                MessageBox.Show("Llene todos los campos de forma correcta");
+            }
+        }
+
+        private void dgvDatos_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            foreach (DataGridViewRow r in dgvDatos.Rows)
+            {
+                if (r.Index == e.RowIndex)
+                {
+                    id = r.Cells["CustomerID"].Value.ToString();
+                    ObtenerDatos(id);
+                }
+            }
+        }
+
+        private void btnACTUALIZAR_Click(object sender, EventArgs e)
+        {
+            if (ValidarTextBoxes(this))
+            {
+                Actualizar();
+            }
+            else
+            {
+                MessageBox.Show("Llene todos los campos de forma correcta");
+            }
+        }
+
+        private void btnELIMINAR_Click(object sender, EventArgs e)
+        {
+            if (idcreados.Count != 0)
+            {
+                for (int i = 0; i < idcreados.Count; i++)
+                {
+                    if (txtIDCliente.Text == idcreados[i])
+                    {
+                        propio = true;
+                    }
+                    else
+                    {
+                        propio=false;
+                    }
+                }
+                if (propio)
+                {
+                    Eliminar();
+                }
+                else
+                {
+                    MessageBox.Show("Elimine un registro que usted haya creado");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ingrese por lo menos un registro propio");
+            }
+        }
     }
 }
